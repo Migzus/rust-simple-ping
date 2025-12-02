@@ -1,5 +1,4 @@
 use std::{
-    env::home_dir,
     fs::File,
     io::{self, Read, Write},
     path::PathBuf,
@@ -30,18 +29,14 @@ fn main() {
         Err(e) => println!("Could not ping {ADDRESS} => {e}"),
     }
 
-    let _path: PathBuf = home_dir().unwrap_or("".into()).join("created.txt");
-    let _d = _path.into_os_string().into_string().unwrap();
-    let _path_str: &str = _d.as_str();
+    let _path_str: &str = "/tmp/created.txt";
     let _res = write_file_test(_path_str);
     match _res {
         Ok(_) => {}
         Err(e) => println!("Error; cannot write to {_path_str} => {e}"),
     }
 
-    let _path: PathBuf = home_dir().unwrap_or("".into()).join("read.txt");
-    let _d = _path.into_os_string().into_string().unwrap();
-    let _path_str: &str = _d.as_str();
+    let _path_str: &str = "/tmp/read.txt";
     // attempt to read a file somewhere on the system
     let _res = read_file_test(_path_str);
     match _res {
